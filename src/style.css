@@ -1,54 +1,104 @@
 
-*{
-  padding: 0;
-  margin: 0; 
-  box-sizing: border-box; 
-}
-
-
 body{
   display: grid;
-  place-items: center center ;
+  place-items: center center; 
   height: 100vh;
+  background-color: var(--bg-color);
 }
 
-.password-container{
-  max-width: 450px;
-  max-height: 323px;
+:root{
+  --bg-color: #201f1e; 
 }
 
-
-.passDisplayer {
-  min-height: 34px;
-  width: 100%;
-  padding: 5px;
-  position: relative;
-  overflow: hidden; 
-  white-space: nowrap; 
-  text-overflow: ellipsis; 
-}
-
-.controllers{
+.stopwatch-container{
   position: absolute;
-  right: 0; 
+  top: 100px; 
+  left: 0;
+  right: 0;
 }
 
-.output{
-  overflow: hidden; 
-  width: 100%;
+.stopwatch-time{
+  font-size: 64px;
 }
 
-.fa-copy{
-  box-shadow: 0px 0px 15px 15px rgb(34, 34, 34);;
+.stopwatch-laps {
+  list-style-type: none;
+  margin-top: 2rem;
+  padding: 0;
+  font-size: 24px; 
 }
 
-.passLength{
+
+.start-btn,.stop-btn, .lap-btn, .reset-btn {
+  width: 10em;
+  position: relative;
+  height: 3.5em;
+  border: 3px ridge #149CEA;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 16px;
+  font-weight: bold;
+  }
+
+.start-btn::after,.stop-btn::after, .lap-btn::after, .reset-btn::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: var(--bg-color);
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+.start-btn::before,.stop-btn::before, .lap-btn::before, .reset-btn::before {
+  content: "";
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: var(--bg-color);
+  transition: 0.5s;
+}
+
+.start-btn:hover::before, 
+.start-btn:hover::after,
+.stop-btn:hover::before,
+.stop-btn:hover::after , 
+.lap-btn:hover::before, 
+.lap-btn:hover::after,
+.reset-btn:hover::before, 
+.reset-btn:hover::after{
+  transform: scale(0); 
+}
+  
+.start-btn:hover,.stop-btn:hover, .lap-btn:hover, .reset-btn:hover {
+  box-shadow: inset 0px 0px 15px #1479EA;
+}
+.stopwatch-time.clicked {
+  background: linear-gradient(to right, transparent 50%, var(--bg-color) 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  background-clip: text;
+  text-decoration: line-through;
+  -webkit-text-fill-color: transparent;
+  animation: strikethrough 430ms ;
+}
+
+@keyframes strikethrough {
+  to{
+    background-position: 0%;
+  }
+}
+
+
+.stopwatch-buttons{
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.passLength > input{
-  margin-top: 3px; 
-  margin-left: 5px; 
+  gap: 5px
 }

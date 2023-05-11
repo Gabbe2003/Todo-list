@@ -1,4 +1,4 @@
-import PasswordGenerator from "./PassWord-generator.tsx";
+import PasswordGenerator from "./Stop-watch.tsx";
 
 function App() {
   return (
