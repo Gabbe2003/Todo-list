@@ -1,9 +1,9 @@
-import PasswordGenerator from "./Stop-watch.tsx";
+import TodoList from "./todoList.tsx";
 
 function App() {
   return (
     <>
-      <PasswordGenerator></PasswordGenerator>
+      <TodoList></TodoList>
     </>
   );
 }
