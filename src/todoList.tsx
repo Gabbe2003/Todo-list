@@ -14,7 +14,19 @@ const NewTodo: React.FC<TodoProps> = ({todo, dispatch}) => {
 const [isEditing,setIsEditing] = useState (false)
 const [editName,setEditName] = useState (todo.name)
 const [boolToggle,setBoolToggle] = useState (false); 
- 
+
+const handelEnter = () => {
+  if(editName.trim() !== '') {
+    dispatch({type: ACTIONS.EDIT_TODO, payload: {id: todo.id, newName: editName}})
+  }
+  setIsEditing(false)
+}
+
+const handleKeyPress = (e: React.KeyboardEvent) => {
+  if (e.key === 'Enter') {
+    handelEnter();
+  }
+}
 return (
   <div className='todos'>
     {isEditing ? (
@@ -22,12 +34,8 @@ return (
         type='text'
         value={editName}
         onChange={(e) => setEditName(e.target.value)}
-        onBlur={() => {
-          if(editName.trim() !== '') {
-            dispatch({type: ACTIONS.EDIT_TODO, payload: {id: todo.id, newName: editName}})
-          }
-          setIsEditing(false)
-        }}
+        onBlur={handelEnter}
+        onKeyPress={handleKeyPress}
         autoFocus
       />
     ) : (
@@ -123,12 +131,21 @@ const TodoList: React.FC = () => {
         <div className="form-control">
           <input type='text' value={name} onChange={e => setName(e.target.value)} required />
           <label>
-            <span style={{transitionDelay: '0ms'}}>S</span>
-            <span style={{transitionDelay: '50ms'}}>e</span>
-            <span style={{transitionDelay: '100ms'}}>a</span>
-            <span style={{transitionDelay: '150ms'}}>r</span>
-            <span style={{transitionDelay: '200ms'}}>c</span>
-            <span style={{transitionDelay: '250ms'}}>h</span>
+            <span style={{transitionDelay: '0ms'}}>W</span>
+            <span style={{transitionDelay: '50ms'}}>r</span>
+            <span style={{transitionDelay: '100ms'}}>i</span>
+            <span style={{transitionDelay: '150ms'}}>t</span>
+            <span style={{transitionDelay: '200ms'}}>e</span>
+            <span style={{transitionDelay: '250ms'}}></span>
+            <span style={{transitionDelay: '300ms'}}>s</span>
+            <span style={{transitionDelay: '350ms'}}>o</span>
+            <span style={{transitionDelay: '400ms'}}>m</span>
+            <span style={{transitionDelay: '450ms'}}>e</span>
+            <span style={{transitionDelay: '500ms'}}>t</span>
+            <span style={{transitionDelay: '550ms'}}>h</span>
+            <span style={{transitionDelay: '600ms'}}>i</span>
+            <span style={{transitionDelay: '650ms'}}>n</span>
+            <span style={{transitionDelay: '700ms'}}>g</span>
           </label>
         </div>
       </form>
